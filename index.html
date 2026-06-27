@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OlloCard Activate – Complete Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0B1F3A;
+      --teal:   #0E7C7B;
+      --teal-lt:#13A39F;
+      --gold:   #F0A500;
+      --cream:  #F7F9FC;
+      --white:  #FFFFFF;
+      --gray:   #6B7280;
+      --lgray:  #E5E9EF;
+      --text:   #1C2B3A;
+      --radius: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--cream); line-height: 1.75; }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: var(--navy);
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.25);
+    }
+    .nav-inner {
+      max-width: 1140px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 64px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-img { width: 42px; height: 42px; object-fit: contain; border-radius: 6px; }
+    .logo-text { font-weight: 700; font-size: 18px; color: #fff; letter-spacing: .3px; }
+    .logo-text span { color: var(--gold); }
+
+    .nav-links { display: flex; gap: 6px; align-items: center; }
+    .nav-links a {
+      color: rgba(255,255,255,.82); text-decoration: none;
+      font-size: 14px; font-weight: 500; padding: 8px 14px; border-radius: 6px;
+      transition: background .2s, color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { background: rgba(255,255,255,.1); color: #fff; }
+
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after { content: " ▾"; font-size: 11px; }
+    .dropdown-menu {
+      display: none; position: absolute; top: calc(100% + 8px); right: 0;
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: 0 8px 28px rgba(0,0,0,.15); min-width: 210px; overflow: hidden;
+    }
+    .nav-dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a {
+      display: block; color: var(--text) !important; padding: 11px 18px;
+      font-size: 14px; text-decoration: none; transition: background .15s;
+      border-bottom: 1px solid var(--lgray);
+    }
+    .dropdown-menu a:last-child { border-bottom: none; }
+    .dropdown-menu a:hover { background: var(--cream); color: var(--teal) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #133A5E 60%, #0E7C7B 100%);
+      color: #fff; padding: 80px 24px 90px; text-align: center;
+    }
+    .hero-badge {
+      display: inline-block; background: rgba(240,165,0,.18); border: 1px solid var(--gold);
+      color: var(--gold); font-size: 12px; font-weight: 600; letter-spacing: 1.2px;
+      text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 52px); font-weight: 800; line-height: 1.15;
+      max-width: 820px; margin: 0 auto 20px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero p {
+      font-size: 17px; color: rgba(255,255,255,.78);
+      max-width: 640px; margin: 0 auto 36px;
+    }
+    .btn-primary {
+      display: inline-block; background: var(--gold); color: var(--navy);
+      font-weight: 700; font-size: 15px; padding: 14px 36px;
+      border-radius: 50px; text-decoration: none; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 18px rgba(240,165,0,.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(240,165,0,.45); }
+    .btn-secondary {
+      display: inline-block; border: 2px solid rgba(255,255,255,.5); color: #fff;
+      font-weight: 600; font-size: 15px; padding: 13px 32px;
+      border-radius: 50px; text-decoration: none; margin-left: 14px;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+
+    /* ── MAIN WRAP ── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 60px 0; }
+
+    /* ── CARDS ROW ── */
+    .cards-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px; padding: 50px 0 20px;
+    }
+    .card {
+      background: var(--white); border-radius: var(--radius);
+      box-shadow: 0 2px 14px rgba(0,0,0,.07); padding: 28px 22px; text-align: center;
+      border-top: 3px solid var(--teal);
+    }
+    .card-icon { font-size: 32px; margin-bottom: 12px; }
+    .card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .card p { font-size: 13px; color: var(--gray); }
+
+    /* ── SECTION HEADINGS ── */
+    .section-label {
+      font-size: 12px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 8px;
+    }
+    h2.section-title {
+      font-family: 'Playfair Display', serif; font-size: clamp(24px, 3.5vw, 36px);
+      color: var(--navy); margin-bottom: 16px; line-height: 1.25;
+    }
+    .section-desc { font-size: 16px; color: var(--gray); margin-bottom: 36px; max-width: 700px; }
+
+    /* ── INTRO ── */
+    #introduction { background: var(--white); }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .intro-visual {
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      border-radius: 16px; padding: 36px; color: #fff; text-align: center;
+    }
+    .credit-card-mock {
+      background: linear-gradient(135deg, #1a3a5c, #0e7c7b);
+      border-radius: 14px; padding: 26px 24px; margin: 0 auto;
+      max-width: 280px; border: 1px solid rgba(255,255,255,.15);
+      box-shadow: 0 10px 40px rgba(0,0,0,.3);
+    }
+    .card-chip { width: 36px; height: 28px; background: var(--gold); border-radius: 5px; margin-bottom: 24px; }
+    .card-number { font-size: 13px; letter-spacing: 3px; color: rgba(255,255,255,.7); margin-bottom: 16px; }
+    .card-name { font-weight: 700; font-size: 15px; color: #fff; }
+    .card-brand { font-size: 12px; color: var(--gold); font-weight: 600; margin-top: 6px; }
+    @media(max-width:680px){ .intro-grid { grid-template-columns: 1fr; } }
+
+    /* ── STEPS ── */
+    #steps { background: var(--cream); }
+    .steps-list { display: flex; flex-direction: column; gap: 22px; }
+    .step {
+      background: var(--white); border-radius: var(--radius);
+      padding: 28px 28px 28px 80px; position: relative;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06); transition: box-shadow .2s;
+    }
+    .step:hover { box-shadow: 0 6px 22px rgba(0,0,0,.10); }
+    .step-num {
+      position: absolute; left: 22px; top: 26px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--teal); color: #fff;
+      font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: center;
+    }
+    .step h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .step p { font-size: 14.5px; color: var(--gray); }
+    .step-tip {
+      margin-top: 10px; padding: 10px 14px;
+      background: #F0FDF9; border-left: 3px solid var(--teal);
+      font-size: 13px; color: var(--teal); border-radius: 0 6px 6px 0;
+    }
+
+    /* ── FAQ ── */
+    #faq { background: var(--white); }
+    .faq-list { display: flex; flex-direction: column; gap: 14px; }
+    .faq-item {
+      border: 1px solid var(--lgray); border-radius: var(--radius); overflow: hidden;
+    }
+    .faq-q {
+      width: 100%; background: none; border: none; text-align: left;
+      padding: 18px 52px 18px 20px; font-size: 15px; font-weight: 600;
+      color: var(--navy); cursor: pointer; position: relative;
+      font-family: 'Inter', sans-serif; transition: background .15s;
+    }
+    .faq-q:hover { background: var(--cream); }
+    .faq-q::after {
+      content: '+'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+      font-size: 22px; color: var(--teal); transition: transform .25s;
+    }
+    .faq-item.open .faq-q::after { transform: translateY(-50%) rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .3s;
+      font-size: 14.5px; color: var(--gray); padding: 0 20px;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 20px 18px; }
+
+    /* ── CONCLUSION ── */
+    #conclusion { background: var(--cream); }
+    .conclusion-box {
+      background: linear-gradient(135deg, var(--navy), #133A5E);
+      color: #fff; border-radius: 16px; padding: 48px 44px; text-align: center;
+    }
+    .conclusion-box h2 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 14px; }
+    .conclusion-box p { color: rgba(255,255,255,.78); margin-bottom: 28px; font-size: 15.5px; }
+
+    /* ── DISCLAIMER ── */
+    #disclaimer { background: var(--navy); color: rgba(255,255,255,.55); }
+    .disclaimer-inner { border-top: 1px solid rgba(255,255,255,.08); padding: 36px 0; }
+    .disclaimer-inner h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(255,255,255,.4); margin-bottom: 12px; }
+    .disclaimer-inner p { font-size: 12.5px; line-height: 1.8; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy); border-top: 1px solid rgba(255,255,255,.06);
+      padding: 20px 24px; text-align: center;
+      font-size: 12px; color: rgba(255,255,255,.35);
+    }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--lgray); margin: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav>
+  <div class="nav-inner">
+    <!-- LOGO – left -->
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="OlloCard Logo" class="logo-img"/>
+      <span class="logo-text">Ollo<span>Card</span></span>
+    </a>
+
+    <!-- LINKS – right -->
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <div class="nav-dropdown">
+        <a href="#">Guide</a>
+        <div class="dropdown-menu">
+          <a href="Steps.html">Step-by-Step </a>
+          <a href="Rewards.html">Rewards</a>
+          <a href="payment.html">Payment Process</a>
+          <a href="Troubleshoot.html">Troubleshooting</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero">
+  <p class="hero-badge">✦ Official Activation Guide 2025</p>
+  <h1>Activate Your <span>Ollo Credit Card</span><br/>Online — Fast &amp; Secure</h1>
+  <p>Step-by-step walkthrough for OlloCard.com/Activate. Get your card ready in under 5 minutes from any device.</p>
+  <a href="#steps" class="btn-primary">Start Activation Guide</a>
+  <a href="activate.html" class="btn-secondary">Full Guide →</a>
+</header>
+
+<!-- ══════════════ QUICK STATS ══════════════ -->
+<div style="background:var(--white);">
+  <div class="container">
+    <div class="cards-row">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>Under 5 Minutes</h3>
+        <p>Average activation time for online process</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <h3>256-bit SSL</h3>
+        <p>Bank-grade encryption protects your data</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📱</div>
+        <h3>Any Device</h3>
+        <p>Works on desktop, tablet, or smartphone</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🕐</div>
+        <h3>24/7 Access</h3>
+        <p>Activate anytime — no business hours required</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ INTRODUCTION ══════════════ -->
+<section id="introduction">
+  <div class="container">
+    <div class="intro-grid">
+      <div>
+        <p class="section-label">Introduction</p>
+        <h2 class="section-title">What Is OlloCard.com/Activate?</h2>
+        <p class="section-desc">
+          OlloCard.com/Activate is the official online portal provided by Ollo (powered by Continental Finance) for cardholders to activate their new Ollo Mastercard credit card quickly and securely.
+        </p>
+        <p style="color:var(--gray); font-size:15px; margin-bottom:18px;">
+          Whether you've just received your <strong>Ollo Platinum Mastercard</strong> or the <strong>Ollo Rewards Card</strong>, activating it through the official website takes just a few minutes and keeps your financial information protected at every step.
+        </p>
+        <p style="color:var(--gray); font-size:15px;">
+          This guide covers everything you need — from prerequisites and the step-by-step activation process to troubleshooting common issues and best security practices.
+        </p>
+      </div>
+      <div class="intro-visual">
+        <p style="font-size:13px; opacity:.7; margin-bottom:18px; text-transform:uppercase; letter-spacing:1px;">Your New Card</p>
+        <div class="credit-card-mock">
+          <div class="card-chip"></div>
+          <div class="card-number">•••• •••• •••• 1234</div>
+          <div class="card-name">CARDHOLDER NAME</div>
+          <div class="card-brand">OLLO MASTERCARD®</div>
+        </div>
+        <p style="font-size:12px; opacity:.55; margin-top:20px;">Activate at OlloCard.com/Activate</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ══════════════ STEP-BY-STEP ══════════════ -->
+<section id="steps">
+  <div class="container">
+    <p class="section-label">Step-by-Step</p>
+    <h2 class="section-title">How to Activate Your Ollo Card Online</h2>
+    <p class="section-desc">Follow these simple steps to complete your Ollo Card activation in minutes.</p>
+
+    <div class="steps-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Visit the Official Activation Page</h3>
+        <p>Open any web browser and navigate to <strong>OlloCard.com/Activate</strong>. Make sure the URL begins with <code>https://</code> — indicating a secure connection.</p>
+        <div class="step-tip">💡 Bookmark this page for future reference and to avoid phishing websites.</div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Enter Your Card Details</h3>
+        <p>Input the 16-digit card number printed on the front of your Ollo Mastercard. You may also need your card's expiration date and the CVV code on the back.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Verify Your Identity</h3>
+        <p>Provide your Social Security Number (last 4 digits), date of birth, and/or the ZIP code used during your card application for identity verification.</p>
+        <div class="step-tip">🔒 Ollo uses bank-grade 256-bit SSL encryption to protect your personal data.</div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Set Up Your Online Account</h3>
+        <p>If you are a first-time user, create a username and password for your Ollo online account portal. Existing users can simply log in with their credentials.</p>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <h3>Confirm Activation</h3>
+        <p>Review the details and click <strong>"Activate My Card."</strong> You will receive a confirmation message on-screen and typically a confirmation email within a few minutes.</p>
+        <div class="step-tip">✅ Your card is now ready to use for purchases, both in-store and online!</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:36px;">
+      <a href="activate.html" class="btn-primary" style="text-decoration:none;">View Full Activation Guide</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ══════════════ FAQ ══════════════ -->
+<section id="faq">
+  <div class="container">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-desc">Answers to the most common questions about activating your Ollo Credit Card online.</p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">What do I need to activate my Ollo Card online?</button>
+        <div class="faq-a">You will need your physical Ollo Mastercard (16-digit card number, expiration date, CVV), your Social Security Number (last 4 digits), your date of birth, and the ZIP code you used when you applied for the card.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Can I activate my Ollo Card without going online?</button>
+        <div class="faq-a">Yes. You can also activate your Ollo Card by calling the customer service number printed on the sticker attached to your new card. Phone activation is available 24/7 via an automated system.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">How long does online activation take?</button>
+        <div class="faq-a">The online activation process typically takes 3–5 minutes. Once confirmed, your card is ready to use immediately for in-store swipes and online purchases.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Is OlloCard.com/Activate safe to use?</button>
+        <div class="faq-a">Yes. The official Ollo activation portal uses 256-bit SSL encryption, the same standard used by major banks. Always make sure you are on the official website (ollocard.com) before entering personal information.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">My card activation failed — what should I do?</button>
+        <div class="faq-a">Double-check the card number, expiration date, and CVV. Ensure the personal information you enter matches exactly what you provided in your application. If problems persist, contact Ollo customer support at the number on the back of your card or through the Ollo website.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">Can I activate the card on my phone?</button>
+        <div class="faq-a">Absolutely. OlloCard.com/Activate is fully mobile-responsive. You can complete the activation on any smartphone or tablet using your mobile browser without needing to install an app.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q">What happens after I activate my Ollo Card?</button>
+        <div class="faq-a">Once activated, your card is ready for immediate use. You can also set up AutoPay, view your credit limit, monitor transactions, and manage your account through the Ollo online portal or by contacting customer service.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ══════════════ CONCLUSION ══════════════ -->
+<section id="conclusion">
+  <div class="container">
+    <p class="section-label">Conclusion</p>
+    <h2 class="section-title">Ready to Activate Your Ollo Card?</h2>
+    <p class="section-desc">
+      Activating your Ollo Mastercard online is a straightforward, secure, and fast process. The OlloCard.com/Activate portal is designed to get you up and running in under five minutes. Keep your card details and personal information handy, visit the official website, and follow the steps outlined in this guide.
+    </p>
+    <p style="color:var(--gray); font-size:15px; margin-bottom: 40px;">
+      Once activated, take full advantage of your Ollo Card's features — from building credit responsibly to earning rewards where applicable. If you ever run into issues, Ollo's customer support team is available to assist you at any time.
+    </p>
+    <div class="conclusion-box">
+      <h2>Activate Your Card Today</h2>
+      <p>Visit the official Ollo activation portal and complete your activation in just a few clicks. Your new card is waiting.</p>
+      <a href="activate.html" class="btn-primary" style="text-decoration:none;">Go to Full Activation Guide →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ DISCLAIMER ══════════════ -->
+<section id="disclaimer" style="padding:0; background:var(--navy);">
+  <div class="container">
+    <div class="disclaimer-inner">
+      <h4>⚠ Disclaimer</h4>
+      <p>
+        This website is an independent informational resource and is <strong style="color:rgba(255,255,255,.65)">not affiliated with, endorsed by, or officially associated with Ollo, Continental Finance, or Mastercard International.</strong> The content provided here is for general educational and informational purposes only. While we strive to keep the information accurate and up to date, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, or suitability of the information contained on this site.
+        <br/><br/>
+        All product names, logos, and trademarks are the property of their respective owners. For official support, activation assistance, or account inquiries, always visit the official Ollo website at <strong style="color:rgba(255,255,255,.65)">ollocard.com</strong> or contact Ollo customer service directly. Use of this site is at your own risk.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <p>© 2025 OlloCard Guide — Independent Informational Resource &nbsp;|&nbsp; Not affiliated with Ollo or Continental Finance &nbsp;|&nbsp; <a href="#disclaimer" style="color:rgba(255,255,255,.4); text-decoration:underline;">Disclaimer</a></p>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
